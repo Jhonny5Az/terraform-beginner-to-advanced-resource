@@ -69,3 +69,25 @@ _autoapprove_
 > export TF_LOG_PATH = terraform.tx
 >
 ## Errors can occur in 4 stages: Language, State, Core and Provider Errors(Authentication API Calls)
+
+## Metaarguments(depends_on,count,for_each,lifecycle,provider)
+>> lifecycle (create_before_detroy, prevent_destroy, ignore_changes, replace_triggered_by)
+``
+  lifecycle {
+    ignore_changes = [tags] | all
+    create_before_destroy = true
+    prevent_destroy = true
+  }
+``
+
+## count when resources are identical,a use for_each when different
+
+## list items are indexed and can have duplicated values
+## Set can only store unique elements. set(string)
+
+## Object a proper structure is generally required, if added more values they will be discard
+``
+variable "object"{
+    type = object({Name = string, userId = number})
+}
+``

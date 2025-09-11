@@ -69,7 +69,7 @@ data "aws_ami" "AmazonVmdAmi" {
   owners = ["amazon"]
 }
 
-resource "aws_instance" "app-dev" {
+/* resource "aws_instance" "app-dev" {
   //ami = lookup(var.ami,var.region)
   //ami = data.aws_ami.ubuntu.id
   //ami = data.aws_ami.AmazonVmdAmi.id
@@ -84,12 +84,14 @@ resource "aws_instance" "app-dev" {
   //MetaArguments
   lifecycle {
     ignore_changes = [tags]
+    create_before_destroy = true
   }
-}
+} */
 
 resource "aws_iam_user" "lb" {
-  name  = "iamuser.${count.index}"
-  count = 3
+  //name  = "iamuser.${count.index}"
+  name = var.iam_name[count.index]
+  count = 5
   path  = "/sytem/"
 }
 
